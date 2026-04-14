@@ -19,8 +19,8 @@ import net.runelite.client.ui.overlay.OverlayManager;
 
 @PluginDescriptor(
 	name = "Unskulled Notifier",
-	description = "Displays a reminder when you are unskulled so you can re-skull before fighting.",
-	tags = { "pvp", "wilderness", "overlay" }
+	description = "Displays a reminder when you are unskulled, with option for revenant caves only",
+	tags = { "skull", "skulled", "unskulled", "notifier", "reminder", "notify", "revs", "revenant", "revenants" }
 )
 public class UnskulledNotifierPlugin extends Plugin
 {
