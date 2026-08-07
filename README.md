@@ -1,1 +1,8 @@
-Displays a "not skulled" icon indicating that you are unskulled. Can be set to only show while in the Revenant Caves.
+# Unskulled Notifier
+
+Displays a "not skulled" icon whenever your character is unskulled.
+
+## Options
+
+- Limit the reminder to the Revenant Caves.
+- Scale the size of the reminder

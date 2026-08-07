@@ -3,6 +3,7 @@ plugins {
 }
 
 repositories {
+	mavenLocal()
     maven {
         url = 'https://repo.runelite.net'
         content {
@@ -27,7 +28,7 @@ dependencies {
 }
 
 group = 'com.unskullednotifier'
-version = '1.0'
+version = '1.0.1'
 
 tasks.withType(JavaCompile).configureEach {
 	options.encoding = 'UTF-8'
