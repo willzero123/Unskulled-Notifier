@@ -7,7 +7,6 @@ import javax.inject.Inject;
 import net.runelite.client.ui.overlay.Overlay;
 import net.runelite.client.ui.overlay.OverlayLayer;
 import net.runelite.client.ui.overlay.OverlayPosition;
-import net.runelite.client.ui.overlay.OverlayPriority;
 import net.runelite.client.ui.overlay.components.ImageComponent;
 import net.runelite.client.util.ImageUtil;
 
@@ -16,7 +15,7 @@ class UnskulledNotifierOverlay extends Overlay
 	private final UnskulledNotifierPlugin plugin;
 	private final UnskulledNotifierConfig config;
 	private final BufferedImage baseIcon;
-	private BufferedImage icon;
+	private ImageComponent icon;
 
 	@Inject
 	private UnskulledNotifierOverlay(UnskulledNotifierPlugin plugin, UnskulledNotifierConfig config)
@@ -27,7 +26,7 @@ class UnskulledNotifierOverlay extends Overlay
 
 		setLayer(OverlayLayer.ALWAYS_ON_TOP);
 		setPosition(OverlayPosition.BOTTOM_LEFT);
-		setPriority(OverlayPriority.HIGH);
+		setPriority(PRIORITY_HIGH);
 
 		this.baseIcon = loadIcon();
 		updateConfig();
@@ -41,13 +40,18 @@ class UnskulledNotifierOverlay extends Overlay
 			return null;
 		}
 
-		return new ImageComponent(icon).render(graphics);
+		return icon.render(graphics);
 	}
 
 	public void updateConfig()
 	{
 		int scale = Math.max(1, config.scale());
-		icon = ImageUtil.resizeImage(baseIcon, baseIcon.getWidth() * scale, baseIcon.getHeight() * scale);
+		BufferedImage resizedIcon = ImageUtil.resizeImage(
+			baseIcon,
+			baseIcon.getWidth() * scale,
+			baseIcon.getHeight() * scale
+		);
+		icon = new ImageComponent(resizedIcon);
 	}
 
 	private static BufferedImage loadIcon()
